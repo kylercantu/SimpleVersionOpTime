@@ -16,7 +16,6 @@ import java.util.logging.Logger;
 
 public class NewOpTime {
     
-//    static String[] split;
 
 
     public static void main(String[] args) {
