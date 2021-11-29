@@ -67,7 +67,11 @@ public class ConsentPage implements ActionListener{
         if(e.getSource()==yesBtn){
             frame.dispose();
            
-            FrontPage fp = new FrontPage();
+            try {
+                FrontPage fp = new FrontPage();
+            } catch (IOException ex) {
+                System.out.println("Error");
+            }
             
             
         }
