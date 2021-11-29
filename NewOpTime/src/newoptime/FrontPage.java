@@ -70,8 +70,8 @@ private static JLabel UserLabel;
             String minute = JOptionPane.showInputDialog("Enter the minute (00-59)");
             minInt = Integer.parseInt(minute);
             
-                    Timer timer = new Timer();
-        TimerTask task = new TimerTask() {
+            Timer timer = new Timer();
+            TimerTask task = new TimerTask() {
 
             @Override
             public void run() {
@@ -82,11 +82,11 @@ private static JLabel UserLabel;
         }; //End timerTask
     
     
-        Calendar date = Calendar.getInstance();
-        date.set(Calendar.HOUR_OF_DAY, hourInt);
-        date.set(Calendar.MINUTE, minInt);
+            Calendar date = Calendar.getInstance();
+            date.set(Calendar.HOUR_OF_DAY, hourInt);
+            date.set(Calendar.MINUTE, minInt);
 
-        timer.schedule(task, date.getTime());
+            timer.schedule(task, date.getTime());
             
 
             
