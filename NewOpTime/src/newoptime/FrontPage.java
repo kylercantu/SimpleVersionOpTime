@@ -64,6 +64,8 @@ private static JLabel UserLabel;
     public void actionPerformed(ActionEvent e) {
         
         if(e.getSource() == timeBtn){
+            
+            String programName = JOptionPane.showInputDialog("Name of Program");
             String hour = JOptionPane.showInputDialog("Enter the hour (00-24)");
             hourInt = Integer.parseInt(hour);
             
