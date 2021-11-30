@@ -50,7 +50,7 @@ private static JLabel UserLabel;
      UserLabel.setFont(new Font("Futura", Font.BOLD, 100));
      
      //Creates the button for user to set time
-     timeBtn = new JButton("Set Time");
+     timeBtn = new JButton("Set Reminder");
      timeBtn.setBounds(100, 500, 200, 100);
      panel.add(timeBtn);
      
