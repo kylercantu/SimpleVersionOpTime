@@ -22,8 +22,7 @@ public class StopWatch{
             elapsedTime += 1000;
             hours = (elapsedTime/3600000);
             minutes = (elapsedTime/60000) % 60;
-            String minutes_string = String.format("%02d", minutes);
-            String hours_string = String.format("%02d", hours);
+
         }
         
         
