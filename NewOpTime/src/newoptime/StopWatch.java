@@ -13,7 +13,6 @@ public class StopWatch{
     int elapsedTime = 0;
     int minutes =0;
     int hours = 0;
-    boolean started = false;
     
     Timer timer = new Timer(1000, new ActionListener() {
         
