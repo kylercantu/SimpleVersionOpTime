@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -71,6 +72,20 @@ private static JLabel UserLabel;
             
             String minute = JOptionPane.showInputDialog("Enter the minute (00-59)");
             minInt = Integer.parseInt(minute);
+            
+            try {
+                FileWriter fw = new FileWriter("UserData.txt", true);
+                PrintWriter pw = new PrintWriter(fw);
+                pw.print(programName);
+                pw.print("/");
+                pw.print(hourInt);
+                pw.print("/");
+                pw.print(minInt);
+                pw.println();
+                pw.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
             
             Timer timer = new Timer();
             TimerTask task = new TimerTask() {
