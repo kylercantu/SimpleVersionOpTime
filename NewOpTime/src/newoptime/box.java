@@ -25,7 +25,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class box extends JPanel implements ActionListener{
 
-    private static String[] columnNames = {"Program Name", "Hour(s)", "Minute(s)"};
+    private static String[] columnNames = {"Program Name", "Hour(s) Used", "Minute(s) Used"};
     
     private static JButton table = new JButton();
     
