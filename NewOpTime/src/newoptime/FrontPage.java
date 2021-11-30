@@ -22,7 +22,7 @@ import javax.swing.JPanel;
 
 public class FrontPage implements ActionListener{
     
-private static JLabel UserLabel;
+   private static JLabel UserLabel;
    private static JLabel currentLabel;
    private static JButton timeBtn;
    private static JLabel timeStats;
@@ -30,6 +30,11 @@ private static JLabel UserLabel;
    
    public int hourInt;
    public int minInt;
+    
+   private static JButton startBtn;
+   private static JButton stopBtn;
+    
+   StopWatch stopWatch = new StopWatch();
    
 
     
@@ -53,8 +58,18 @@ private static JLabel UserLabel;
      timeBtn = new JButton("Set Reminder");
      timeBtn.setBounds(100, 500, 200, 100);
      panel.add(timeBtn);
+        
+     startBtn = new JButton("Start Tracking");
+     startBtn.setBounds(100, 500, 200, 100);
+     panel.add(startBtn);
+
+     stopBtn = new JButton("Stop Tracking");
+     stopBtn.setBounds(100, 700, 200, 100);
+     panel.add(stopBtn);
      
      timeBtn.addActionListener(this);
+     startBtn.addActionListener(this);
+     stopBtn.addActionListener(this);
 
      frame.setVisible(true);
      
@@ -66,26 +81,11 @@ private static JLabel UserLabel;
         
         if(e.getSource() == timeBtn){
             
-            String programName = JOptionPane.showInputDialog("Name of Program");
             String hour = JOptionPane.showInputDialog("Enter the hour (00-24)");
             hourInt = Integer.parseInt(hour);
             
             String minute = JOptionPane.showInputDialog("Enter the minute (00-59)");
             minInt = Integer.parseInt(minute);
-            
-            try {
-                FileWriter fw = new FileWriter("UserData.txt", true);
-                PrintWriter pw = new PrintWriter(fw);
-                pw.print(programName);
-                pw.print("/");
-                pw.print(hourInt);
-                pw.print("/");
-                pw.print(minInt);
-                pw.println();
-                pw.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
             
             Timer timer = new Timer();
             TimerTask task = new TimerTask() {
@@ -104,11 +104,52 @@ private static JLabel UserLabel;
             date.set(Calendar.MINUTE, minInt);
 
             timer.schedule(task, date.getTime());
-            
 
+        }//end timeBtn if statement
+        
+        
+        if(e.getSource() == startBtn){
             
-
-        }
+            String programName = JOptionPane.showInputDialog("Name of Program");
+            
+            try {
+                FileWriter fw = new FileWriter("UserData.txt", true);
+                PrintWriter pw = new PrintWriter(fw);
+                pw.print(programName);
+                pw.print("/");
+                pw.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            
+            stopWatch.start();
+            
+            
+        }//End startBtn if statement
+        
+        
+        
+        if(e.getSource() == stopBtn){
+            stopWatch.stop();
+            
+            JOptionPane.showMessageDialog(null, "Tracking Stopped");
+            
+            try {
+                FileWriter fw = new FileWriter("UserData.txt", true);
+                PrintWriter pw = new PrintWriter(fw);
+                pw.print(stopWatch.hours);
+                pw.print("/");
+                pw.println(stopWatch.minutes);
+                pw.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            
+        }//End stopBtn if statement
+        
+        
+        
+        
         
     }//End actionPerformed
     
