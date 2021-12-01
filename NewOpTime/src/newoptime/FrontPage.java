@@ -127,7 +127,8 @@ private static JLabel UserLabel;
             String minute = JOptionPane.showInputDialog("Enter the minute (00-59)");
             minInt = Integer.parseInt(minute);
             
-            
+            JOptionPane.showMessageDialog(null, "Reminder Set");
+             
             Timer timer = new Timer();
             TimerTask task = new TimerTask() {
 
